@@ -47,22 +47,22 @@ if (isset($_GET["idUser"])) {
                         <?php if (isset($_GET["idUser"]) && strval($user["id"]) === $_GET["idUser"]) : ?>
                             <form method="POST" action="">
                                 <td>
-                                    <input type="text" name="lastname" value='<?= $user["nom"] ?>'>
+                                    <input type="text" name="lastname" value='<?= htmlspecialchars($user["nom"]) ?>'>
                                     <?php if (isset($error["lastname"])) echo "<p>" . $error["lastname"] . "</p>" ?>
                                 </td>
 
                                 <td>
-                                    <input type="text" name="firstname" value='<?= $user["prenom"] ?>'>
+                                    <input type="text" name="firstname" value='<?= htmlspecialchars($user["prenom"]) ?>'>
                                     <?php if (isset($error["firstname"])) echo "<p>" . $error["firstname"] . "</p>" ?>
                                 </td>
 
                                 <td>
-                                    <input type="text" name="email" value='<?= $user["mail"] ?>'>
+                                    <input type="text" name="email" value='<?= htmlspecialchars($user["mail"]) ?>'>
                                     <?php if (isset($error["email"])) echo "<p>" . $error["email"] . "</p>" ?>
                                 </td>
 
                                 <td>
-                                    <input type="text" name="postalCode" value='<?= $user["code_postal"] ?>'>
+                                    <input type="text" name="postalCode" value='<?= htmlspecialchars($user["code_postal"]) ?>'>
                                     <?php if (isset($error["postalCode"])) echo "<p>" . $error["postalCode"] . "</p>" ?>
                                 </td>
 
@@ -74,10 +74,10 @@ if (isset($_GET["idUser"])) {
                                 </td>
                             </form>
                         <?php else: ?>
-                            <td><?= $user['nom']; ?></td>
-                            <td><?= $user["prenom"]; ?></td>
-                            <td><?= $user["mail"]; ?></td>
-                            <td><?= $user["code_postal"]; ?></td>
+                            <td><?= htmlspecialchars($user['nom']); ?></td>
+                            <td><?= htmlspecialchars($user["prenom"]); ?></td>
+                            <td><?= htmlspecialchars($user["mail"]); ?></td>
+                            <td><?= htmlspecialchars($user["code_postal"]); ?></td>
                             <td><a href='./functions/remove.php?idUser=<?= $user['id'] ?>'>Supprimer</a></td>
                             <td><a href='?idUser=<?= $user['id'] ?>'>Modifier</a></td>
                         <?php endif ?>
