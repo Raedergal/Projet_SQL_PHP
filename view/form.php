@@ -22,7 +22,7 @@ require_once("../functions/createUser.php");
 
         <section>
             
-            <h1><?= $title = isset($_GET["idUser"]) ? "Modifie tes données" : "Rentre un nouveau utilisateur" ?></h1>
+            <h1><?= isset($_GET["idUser"]) ? "Modifie tes données" : "Rentre un nouveau utilisateur" ?></h1>
             <a class="button" href="../index.php">Retour</a>
 
             <form method="POST" action="">
