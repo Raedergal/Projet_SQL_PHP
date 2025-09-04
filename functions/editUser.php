@@ -1,10 +1,8 @@
 <?php
 
-require_once("../db.php");
-
 $error = [];
+if (isset($_SESSION["id"])) $idUser = $_SESSION["id"];
 
-if (isset($_GET["idUser"])) $idUser = $_GET["idUser"];
 
 if (isset($_POST["lastname"])) {
 
@@ -19,7 +17,7 @@ if (isset($_POST["lastname"])) {
     if (!preg_match("/^[^@]+@[^@]+\.[^@]+$/", $_POST["email"])) {
         $error["email"] = "Rentre un email valide";
     }
-    if (!preg_match("/[0-9]{5}+/", $_POST["postalCode"])) {
+    if (!preg_match("/^[0-9]{5}$/", $_POST["postalCode"])) {
         $error["postalCode"] = "Rentre un code postal valide";
     }
 
@@ -69,6 +67,7 @@ if (isset($_POST["lastname"])) {
 
         $codeSql->execute();
 
-        header("Location: ../index.php");
+        $_SESSION["id"] = null;
+        header("Location: ./index.php");
     }
 }

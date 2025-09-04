@@ -2,16 +2,7 @@
 
 require_once("../db.php");
 require_once("../functions/createUser.php");
-require_once("../functions/editUser.php");
 
-if (isset($_GET["idUser"])) {
-    $idUser = $_GET["idUser"];
-
-    $codeSql = $db -> prepare("SELECT * FROM users WHERE id = :idUser");
-    $codeSql -> bindParam(":idUser", $idUser, PDO::PARAM_INT);
-    $codeSql -> execute();
-    $user = $codeSql -> fetch(PDO::FETCH_ASSOC);
-};
 
 ?>
 
@@ -37,19 +28,19 @@ if (isset($_GET["idUser"])) {
             <form method="POST" action="">
 
                 <label for="lastname">Nom</label>
-                <input type="text" placeholder="Nom de famille" name="lastname" value='<?php if(isset($_GET["idUser"])) echo $user["nom"] ?>'>
+                <input type="text" placeholder="Nom de famille" name="lastname">
                 <?php if(isset($error["lastname"])) echo "<p>" . $error["lastname"] . "</p>" ?>
 
                 <label for="firstname">Prénom</label>
-                <input type="text" placeholder="Prénom" name="firstname" value='<?php if(isset($_GET["idUser"])) echo $user["prenom"] ?>'>
+                <input type="text" placeholder="Prénom" name="firstname">
                 <?php if(isset($error["firstname"])) echo "<p>" . $error["firstname"] . "</p>" ?>
 
                 <label for="email">Email</label>
-                <input type="text" placeholder="Adresse email" name="email" value='<?php if(isset($_GET["idUser"])) echo $user["mail"] ?>'>
+                <input type="text" placeholder="Adresse email" name="email">
                 <?php if(isset($error["email"])) echo "<p>" . $error["email"] . "</p>" ?>
 
                 <label for="postalCode">Code Postal</label>
-                <input type="text" placeholder="Code postal de la ville" name="postalCode" value='<?php if(isset($_GET["idUser"])) echo $user["code_postal"] ?>'>
+                <input type="text" placeholder="Code postal de la ville" name="postalCode">
                 <?php if(isset($error["postalCode"])) echo "<p>" . $error["postalCode"] . "</p>" ?>
 
                 <button type="submit">Valider</button>
