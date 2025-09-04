@@ -44,10 +44,10 @@ if (isset($_POST["lastname"])) {
         !isset($error["postalCode"])
     ) {
 
-        $lastname = $_POST["lastname"];
-        $firstname = $_POST["firstname"];
-        $email = $_POST["email"];
-        $postalCode = $_POST["postalCode"];
+        $lastname = htmlspecialchars($_POST["lastname"]);
+        $firstname = htmlspecialchars($_POST["firstname"]);
+        $email = htmlspecialchars($_POST["email"]);
+        $postalCode = htmlspecialchars($_POST["postalCode"]);
 
 
         $codeSql = $db->prepare(
